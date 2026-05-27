@@ -1,0 +1,299 @@
+---
+import Base from '../layouts/Base.astro';
+
+const skills = [
+  {
+    title: 'Minecraft Plugins',
+    desc: 'Command systems, permission checks, player state, config files, and server-safe defaults for Spigot and Paper servers.',
+    tags: ['Java', 'Spigot', 'PaperMC', 'Bukkit API', 'Gradle', 'Maven', 'YAML'],
+  },
+  {
+    title: 'Discord Bots',
+    desc: 'Slash commands, buttons, modals, event handlers, role checks, and deployable bot structure with Discord.js.',
+    tags: ['TypeScript', 'Node.js', 'Discord.js', 'Webhooks', 'Embeds', 'Interactions'],
+  },
+  {
+    title: 'Backend & Storage',
+    desc: 'Small data layers for community tools, with simple schemas, validation, and clear fallback behavior.',
+    tags: ['SQLite', 'Supabase', 'REST APIs', 'Validation', 'JSON Config'],
+  },
+  {
+    title: 'Web & Tooling',
+    desc: 'Readable code, scoped feature lists, clean UIs, and notes that make handoff and maintenance easier.',
+    tags: ['Next.js', 'Astro', 'React', 'Git', 'ESLint', 'Docs'],
+  },
+];
+
+const projects = [
+  {
+    name: 'Apex Building Bot',
+    type: 'Discord Bot',
+    desc: 'Full-service Discord bot for Donut SMP and Apex communities. Ticketing, moderation, giveaways, LOA tracking, builder applications, and more — all backed by SQLite with WAL mode.',
+    features: [
+      'Ticket panels: General, Build, Digout, Refund, Regear + more',
+      'Moderation: warn, mute, tempban, slowmode, lock/unlock',
+      'Split or Steal giveaway system with daily auto-giveaways',
+      'Builder application forms with cooldown window',
+      'DM-based builder rating and feedback system',
+    ],
+    tech: ['TypeScript', 'Node.js', 'Discord.js v14', 'better-sqlite3'],
+    github: 'https://github.com/veekshith177-bot/Apex-Building-Bot',
+    live: 'https://discord.gg/n7qY76PMH7',
+  },
+  {
+    name: 'Minecraft Skin Gallery',
+    type: 'Web App',
+    desc: '3D Minecraft skin viewer. Type any username and see their skin rendered in real-time with 6 animations, cape support, auto model detection, and a full Minecraft-themed UI.',
+    features: [
+      'Real-time 3D rendering with skinview3d + Three.js',
+      '6 animations: Walk, Run, Fly, Wave, Crouch, Swim',
+      'Auto-detects Alex vs Steve arm models',
+      'Cape support for any player who has one',
+      'Responsive across desktop, tablet, and mobile',
+    ],
+    tech: ['Astro', 'Three.js', 'skinview3d', 'PlayerDB API'],
+    github: 'https://github.com/veekshith177-bot/Minecraft-Skin-Gallery',
+    live: 'https://minecraft-skin-gallery.netlify.app',
+  },
+];
+
+const services = [
+  {
+    icon: '⛏',
+    title: 'Minecraft Plugin Builds',
+    desc: 'Custom command packs, SMP utilities, staff tools, and small persistence layers for Spigot or Paper servers.',
+    points: ['Commands', 'Permissions', 'SQLite', 'Config'],
+  },
+  {
+    icon: '🤖',
+    title: 'Discord Bot Features',
+    desc: 'Slash commands, ticket flows, giveaway logic, role checks, logging, and service automation for any community.',
+    points: ['Discord.js', 'Buttons', 'Modals', 'Logs'],
+  },
+  {
+    icon: '🔧',
+    title: 'Backend & Tooling',
+    desc: 'Route handlers, data validation, storage fallbacks, and lightweight web UIs for community-facing tools.',
+    points: ['Next.js', 'APIs', 'Supabase', 'Validation'],
+  },
+];
+---
+
+<Base>
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="scanline"></div>
+
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">veekshith</a>
+      <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="/building">Building</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- ─── Hero ─── -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">open for freelance builds</div>
+        <h1>
+          I build <span class="hl">server tools</span><br />
+          that make communities<br />
+          run smoother
+        </h1>
+        <p>
+          Minecraft plugin and Discord bot developer focused on command systems,
+          moderation utilities, ticket flows, giveaways, and SQLite-backed configs
+          that just work.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="https://discord.gg/2fakAhQpP8" target="_blank" class="btn btn-secondary">Join Discord</a>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ─── Stats ─── -->
+    <section class="section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">3+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">6+</div>
+          <div class="stat-label">Builds Delivered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">50+</div>
+          <div class="stat-label">Features Shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">SMP</div>
+          <div class="stat-label">Primary Focus</div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ─── About ─── -->
+    <section class="section">
+      <div class="section-head">
+        <div class="section-label">About</div>
+        <h2 class="section-title">What I do</h2>
+      </div>
+      <div class="about-text">
+        <p>
+          I build <strong>Minecraft plugins</strong> and <strong>Discord bots</strong>
+          for SMP servers and gaming communities. My stack is Java + Spigot/Paper on
+          the plugin side, TypeScript + Discord.js for bots, and SQLite or Supabase
+          when I need persistence.
+        </p>
+        <p>
+          I built the <strong>Apex Building Bot</strong> — a full-service Discord bot
+          with ticketing, moderation, giveaways, and application flows — and
+          <strong>Minecraft Skin Gallery</strong>, a 3D skin viewer that renders any
+          player's skin in real-time. Every project gets readable code, scoped feature
+          lists, and clear handoff notes.
+        </p>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ─── Skills ─── -->
+    <section id="skills" class="section">
+      <div class="section-head">
+        <div class="section-label">Skills</div>
+        <h2 class="section-title">What I work with</h2>
+      </div>
+      <div class="skills-grid">
+        {skills.map((sk) => (
+          <div class="skill-card">
+            <h3>{sk.title}</h3>
+            <p>{sk.desc}</p>
+            <div class="skill-tags">
+              {sk.tags.map((t) => (
+                <span class="skill-tag">{t}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ─── Projects ─── -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <div class="section-label">Projects</div>
+        <h2 class="section-title">Selected builds</h2>
+      </div>
+      <div class="project-grid">
+        {projects.map((p) => (
+          <article class="project-card">
+            <div class="terminal-titlebar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">{p.name.toLowerCase().replace(/\s+/g, '-')}/</span>
+            </div>
+            <div class="terminal-body">
+              <div class="project-head">
+                <h3 class="project-name">{p.name}</h3>
+                <span class="project-type">{p.type}</span>
+              </div>
+              <p class="project-desc">{p.desc}</p>
+              <ul class="project-features">
+                {p.features.map((f) => (
+                  <li>{f}</li>
+                ))}
+              </ul>
+              <div class="project-tech">
+                {p.tech.map((t) => (
+                  <span class="project-tech-tag">{t}</span>
+                ))}
+              </div>
+              <div class="project-links">
+                <a href={p.github} target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                  {p.github !== '#' ? 'Source' : 'Private'}
+                </a>
+                <a href={p.live} target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  {p.github !== '#' ? 'Live' : 'Private'}
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:28px">
+        <a href="/building" class="btn btn-secondary" style="font-family:'JetBrains Mono',monospace">
+          △ view projects in progress →
+        </a>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ─── Services ─── -->
+    <section id="services" class="section">
+      <div class="section-head">
+        <div class="section-label">Services</div>
+        <h2 class="section-title">What I can build for you</h2>
+      </div>
+      <div class="services-grid">
+        {services.map((svc) => (
+          <div class="service-card">
+            <div class="service-icon">{svc.icon}</div>
+            <h3>{svc.title}</h3>
+            <p>{svc.desc}</p>
+            <div class="service-points">
+              {svc.points.map((pt) => (
+                <span class="service-point">{pt}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ─── Contact ─── -->
+    <section id="contact" class="contact-section">
+      <div class="contact-inner">
+        <h2>Let's build something</h2>
+        <p>Got a server that needs custom tools or a community that deserves better automation? Reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:veekshith177@gmail.com" class="contact-link">Email Me</a>
+          <a href="https://github.com/veekshith177-bot" target="_blank" class="contact-link">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+          <a href="https://discord.gg/2fakAhQpP8" target="_blank" class="contact-link">
+            <svg viewBox="0 0 640 512" fill="currentColor"><path d="M524.5 69.8a1.5 1.5 0 0 0-.8-.7A485 485 0 0 0 404.1 32a1.8 1.8 0 0 0-1.9.7 338 338 0 0 0-14.9 30.5 446 446 0 0 0-134.4 0 297 297 0 0 0-14.9-30.5 1.9 1.9 0 0 0-1.9-.7 483 483 0 0 0-119.8 37.1 1.7 1.7 0 0 0-.8.7C35.5 196.5-6.8 319.9 3.1 441.9c0 .2 0 .4.1.6.2 1.4.8 2.7 1.7 3.8a486 486 0 0 0 147.2 74.2c1.6.5 3.4-.2 4.4-1.7a311 311 0 0 0 25.9-43.9c1.2-2.7.1-5.8-2.5-7a390 390 0 0 1-38.9-18.5 3.9 3.9 0 0 1-.9-6.6c2.6-1.9 5.2-3.9 7.7-5.9.5-.4 1.2-.5 1.8-.3 82.4 37.6 171.6 37.6 253.9 0 .6-.2 1.3-.1 1.8.3 2.5 2 5.1 4 7.7 5.9.8.6 1 1.8.6 2.8l-.4.9a1.6 1.6 0 0 1-.5 1.1c-12.6 7.2-25.8 13.3-39.3 18.5-2.7 1.2-3.7 4.3-2.5 7a316 316 0 0 0 26.2 44c1 1.5 2.8 2.2 4.4 1.7a487 487 0 0 0 147.8-74.2 5.8 5.8 0 0 0 1.7-3.8c.1-.2.1-.4.1-.6 10.8-131.6-19.5-253-83.7-372.1zM215.4 370.6c-24.7 0-44.9-22.7-44.9-50.4s19.8-50.4 44.9-50.4 45.2 22.7 44.9 50.4c0 27.7-20.1 50.4-44.9 50.4zm209.2 0c-24.7 0-44.9-22.7-44.9-50.4s19.8-50.4 44.9-50.4 45.2 22.7 44.9 50.4c0 27.7-20.1 50.4-44.9 50.4z"/></svg>
+            Discord
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer>
+      <p><span class="green">veekshith</span> &copy; 2026 &nbsp;·&nbsp; built with astro</p>
+    </footer>
+  </div>
+</Base>
