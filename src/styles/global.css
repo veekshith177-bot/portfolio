@@ -607,6 +607,82 @@ hr { border: none; height: 1px; background: var(--border); margin: 0; }
 
 .contact-link svg { width: 16px; height: 16px; }
 
+/* ─── Music Toggle ─── */
+.music-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  backdrop-filter: blur(8px);
+  opacity: 0.7;
+}
+
+.music-btn:hover {
+  opacity: 1;
+  border-color: var(--green-dim);
+  color: var(--green);
+  box-shadow: 0 0 20px var(--green-glow);
+  transform: scale(1.08);
+}
+
+.music-btn .music-icon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.music-btn .music-on { opacity: 0; transform: scale(0.5); }
+.music-btn .music-off { opacity: 1; transform: scale(1); }
+
+.music-btn.started .music-on { opacity: 1; transform: scale(1); }
+.music-btn.started .music-off { opacity: 0; transform: scale(0.5); }
+
+.music-btn.muted { opacity: 0.4; border-color: var(--border); color: var(--text-dim); }
+.music-btn.muted:hover { opacity: 0.7; }
+
+.music-btn::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--green);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.music-btn.playing::after {
+  animation: music-pulse 3s ease-in-out infinite;
+}
+
+@keyframes music-pulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.15); }
+}
+
+/* ─── Scroll Reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ─── Footer ─── */
 footer { padding: 32px 0 48px; border-top: 1px solid var(--border); text-align: center; }
 

@@ -16,18 +16,6 @@ const building = [
     tech: ['Java', 'Spigot API', 'PaperMC', 'SQLite', 'Gradle'],
   },
   {
-    name: 'Discord Bot Dashboard',
-    type: 'Web App',
-    desc: 'Web dashboard to manage Discord bots visually — view command stats, server analytics, and moderation logs in real time.',
-    features: [
-      'Real-time command usage metrics',
-      'Server activity graphs',
-      'Moderation log viewer',
-      'Role and permission overview',
-    ],
-    tech: ['Astro', 'React', 'Discord API', 'Chart.js'],
-  },
-  {
     name: 'Server Status Monitor',
     type: 'Web App',
     desc: 'Public status page that pings your services every 5 minutes and shows live green/red indicators with incident history.',
@@ -79,8 +67,7 @@ const building = [
             Projects <span class="hl">building</span> now
           </h1>
           <p style="font-size:15px;max-width:520px">
-            These are actively being worked on. Each one ships with readable code,
-            scoped features, and clear docs.
+            Shipping soon. Each one gets readable code, scoped features, and clear docs.
           </p>
         </div>
       </div>
@@ -88,7 +75,7 @@ const building = [
 
     <hr />
 
-    <section class="section">
+    <section class="section reveal">
       <div class="project-grid">
         {building.map((p) => (
           <article class="project-card">

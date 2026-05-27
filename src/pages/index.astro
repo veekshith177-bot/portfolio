@@ -41,6 +41,21 @@ const projects = [
     live: 'https://discord.gg/n7qY76PMH7',
   },
   {
+    name: 'Apex Bot Dashboard',
+    type: 'Web App',
+    desc: 'Web dashboard companion for the Apex Building Bot — view command stats, server analytics, moderation logs, and manage your Discord server visually in real time.',
+    features: [
+      'Real-time command usage metrics and graphs',
+      'Server activity and member analytics',
+      'Moderation log viewer with search',
+      'Role and permission management UI',
+      'Direct integration with Apex Building Bot',
+    ],
+    tech: ['Astro', 'React', 'Discord API', 'Chart.js', 'SQLite'],
+    github: 'https://github.com/veekshith177-bot/Apex-Building-Bot',
+    live: '#',
+  },
+  {
     name: 'Minecraft Skin Gallery',
     type: 'Web App',
     desc: '3D Minecraft skin viewer. Type any username and see their skin rendered in real-time with 6 animations, cape support, auto model detection, and a full Minecraft-themed UI.',
@@ -123,7 +138,7 @@ const services = [
     <hr />
 
     <!-- ─── Stats ─── -->
-    <section class="section">
+    <section class="section reveal">
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-value">3+</div>
@@ -147,7 +162,7 @@ const services = [
     <hr />
 
     <!-- ─── About ─── -->
-    <section class="section">
+    <section class="section reveal">
       <div class="section-head">
         <div class="section-label">About</div>
         <h2 class="section-title">What I do</h2>
@@ -161,10 +176,11 @@ const services = [
         </p>
         <p>
           I built the <strong>Apex Building Bot</strong> — a full-service Discord bot
-          with ticketing, moderation, giveaways, and application flows — and
-          <strong>Minecraft Skin Gallery</strong>, a 3D skin viewer that renders any
-          player's skin in real-time. Every project gets readable code, scoped feature
-          lists, and clear handoff notes.
+          with ticketing, moderation, giveaways, and application flows — plus its
+          <strong>web dashboard</strong> for real-time server analytics and management.
+          I also built <strong>Minecraft Skin Gallery</strong>, a 3D skin viewer that
+          renders any player's skin in real-time. Every project gets readable code,
+          scoped feature lists, and clear handoff notes.
         </p>
       </div>
     </section>
@@ -172,7 +188,7 @@ const services = [
     <hr />
 
     <!-- ─── Skills ─── -->
-    <section id="skills" class="section">
+    <section id="skills" class="section reveal">
       <div class="section-head">
         <div class="section-label">Skills</div>
         <h2 class="section-title">What I work with</h2>
@@ -195,7 +211,7 @@ const services = [
     <hr />
 
     <!-- ─── Projects ─── -->
-    <section id="projects" class="section">
+    <section id="projects" class="section reveal">
       <div class="section-head">
         <div class="section-label">Projects</div>
         <h2 class="section-title">Selected builds</h2>
@@ -249,7 +265,7 @@ const services = [
     <hr />
 
     <!-- ─── Services ─── -->
-    <section id="services" class="section">
+    <section id="services" class="section reveal">
       <div class="section-head">
         <div class="section-label">Services</div>
         <h2 class="section-title">What I can build for you</h2>
