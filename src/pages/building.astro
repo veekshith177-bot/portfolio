@@ -18,10 +18,10 @@ const building = [
   {
     name: 'Server Status Monitor',
     type: 'Web App',
-    desc: 'Public status page that pings your services every 5 minutes and shows live green/red indicators with incident history.',
+    desc: 'Public status page that pings your services every 5 minutes and shows live indicators with incident history.',
     features: [
       'Automated uptime checks every 5 min',
-      'Live green/red status indicators',
+      'Live status indicators',
       'Incident timeline with history',
       'Slack/Discord alert webhooks',
     ],
@@ -43,7 +43,6 @@ const building = [
 ---
 
 <Base>
-  <div class="bg-grid"></div>
   <div class="bg-glow bg-glow-1"></div>
   <div class="bg-glow bg-glow-2"></div>
   <div class="scanline"></div>
@@ -51,9 +50,14 @@ const building = [
   <nav>
     <div class="container">
       <a href="/" class="logo">veekshith</a>
-      <ul class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="/">Home</a></li>
-        <li><a href="/building" style="color:var(--cyan)">Building</a></li>
+        <li><a href="/building" style="color:var(--obs-primary)">Building</a></li>
       </ul>
     </div>
   </nav>
@@ -62,11 +66,11 @@ const building = [
     <section class="hero" style="min-height:auto;padding-top:100px;padding-bottom:40px">
       <div class="hero-content" style="max-width:100%;padding:0">
         <div class="section-head">
-          <div class="section-label" style="font-size:12px">In Progress</div>
+          <div class="section-label">In Progress</div>
           <h1 style="font-size:clamp(28px,4vw,42px);margin-bottom:12px">
-            Projects <span class="hl">building</span> now
+            Projects <span class="text-gradient">building</span> now
           </h1>
-          <p style="font-size:15px;max-width:520px">
+          <p style="font-size:15px;max-width:520px;font-family:'JetBrains Mono',monospace;color:var(--obs-on-surface-variant)">
             Shipping soon. Each one gets readable code, scoped features, and clear docs.
           </p>
         </div>
@@ -78,14 +82,17 @@ const building = [
     <section class="section reveal">
       <div class="project-grid">
         {building.map((p) => (
-          <article class="project-card">
-            <div class="terminal-titlebar">
-              <span class="terminal-dot red"></span>
-              <span class="terminal-dot yellow"></span>
-              <span class="terminal-dot green"></span>
-              <span class="terminal-title">{p.name.toLowerCase().replace(/\s+/g, '-')}/</span>
+          <article class="project-card glass-panel bento-hover-cyan">
+            <div class="project-macos-header">
+              <div class="project-macos-dots">
+                <span class="project-macos-dot red"></span>
+                <span class="project-macos-dot yellow"></span>
+                <span class="project-macos-dot green"></span>
+              </div>
+              <span class="project-macos-title">{p.name.toLowerCase().replace(/\s+/g, '-')}/</span>
+              <div style="width:48px"></div>
             </div>
-            <div class="terminal-body">
+            <div class="project-card-body" style="padding-top:24px">
               <div class="project-head">
                 <h3 class="project-name">{p.name}</h3>
                 <span class="project-type">{p.type}</span>
@@ -96,21 +103,17 @@ const building = [
               </div>
               <p class="project-desc">{p.desc}</p>
               <ul class="project-features">
-                {p.features.map((f) => (
-                  <li>{f}</li>
-                ))}
+                {p.features.map((f) => <li>{f}</li>)}
               </ul>
               <div class="project-tech">
-                {p.tech.map((t) => (
-                  <span class="project-tech-tag">{t}</span>
-                ))}
+                {p.tech.map((t) => <span class="project-tech-tag">{t}</span>)}
               </div>
               <div class="project-links">
-                <span class="project-link" style="color:var(--text-dim);cursor:default;opacity:0.5">
+                <span class="project-link" style="cursor:default;opacity:0.5">
                   <svg viewBox="0 0 16 16" fill="currentColor" width="13" height="13"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                   coming soon
                 </span>
-                <span class="project-link" style="color:var(--text-dim);cursor:default;opacity:0.5">
+                <span class="project-link" style="cursor:default;opacity:0.5">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                   preview soon
                 </span>
@@ -120,7 +123,7 @@ const building = [
         ))}
       </div>
 
-      <div style="text-align:center;margin-top:32px">
+      <div style="text-align:center;margin-top:40px">
         <a href="/" class="btn btn-secondary" style="font-family:'JetBrains Mono',monospace">
           ← back to projects
         </a>
@@ -128,7 +131,7 @@ const building = [
     </section>
 
     <footer>
-      <p><span class="green">veekshith</span> &copy; 2026 &nbsp;·&nbsp; built with astro</p>
+      <p><span class="accent">veekshith</span> &copy; 2026 &nbsp;·&nbsp; built with astro</p>
     </footer>
   </div>
 </Base>

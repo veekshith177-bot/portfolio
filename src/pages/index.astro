@@ -3,24 +3,36 @@ import Base from '../layouts/Base.astro';
 
 const skills = [
   {
-    title: 'Minecraft Plugins',
-    desc: 'Command systems, permission checks, player state, config files, and server-safe defaults for Spigot and Paper servers.',
-    tags: ['Java', 'Spigot', 'PaperMC', 'Bukkit API', 'Gradle', 'Maven', 'YAML'],
+    title: 'Discord.js Ecosystems',
+    desc: 'Building resilient, shard-ready bots that scale across thousands of guilds. Custom dashboards, interaction handling, and caching strategies.',
+    tags: ['TypeScript', 'Redis', 'Sharding'],
+    icon: 'smart_toy',
+    color: 'purple',
+    span: 'large',
   },
   {
-    title: 'Discord Bots',
-    desc: 'Slash commands, buttons, modals, event handlers, role checks, and deployable bot structure with Discord.js.',
-    tags: ['TypeScript', 'Node.js', 'Discord.js', 'Webhooks', 'Embeds', 'Interactions'],
+    title: 'Java & Spigot API',
+    desc: 'Custom game modes, economy systems, and performance-optimized plugins for heavy-load Minecraft networks.',
+    tags: ['Java', 'Spigot', 'PaperMC', 'Bukkit API'],
+    icon: 'code_blocks',
+    color: 'cyan',
+    span: 'wide',
   },
   {
-    title: 'Backend & Storage',
-    desc: 'Small data layers for community tools, with simple schemas, validation, and clear fallback behavior.',
-    tags: ['SQLite', 'Supabase', 'REST APIs', 'Validation', 'JSON Config'],
+    title: 'SQLite / DBs',
+    desc: 'Lightweight data layers with simple schemas, validation, and clear fallback behavior.',
+    tags: ['SQLite', 'Supabase', 'REST APIs'],
+    icon: 'database',
+    color: 'orange',
+    span: 'small',
   },
   {
-    title: 'Web & Tooling',
-    desc: 'Readable code, scoped feature lists, clean UIs, and notes that make handoff and maintenance easier.',
-    tags: ['Next.js', 'Astro', 'React', 'Git', 'ESLint', 'Docs'],
+    title: 'Docker & CI/CD',
+    desc: 'Containerized deployments and automated pipelines for reliable, reproducible builds.',
+    tags: ['Docker', 'GitHub Actions', 'Linux'],
+    icon: 'build_circle',
+    color: 'purple',
+    span: 'small',
   },
 ];
 
@@ -39,6 +51,7 @@ const projects = [
     tech: ['TypeScript', 'Node.js', 'Discord.js v14', 'better-sqlite3'],
     github: 'https://github.com/veekshith177-bot/Apex-Building-Bot',
     live: 'https://discord.gg/n7qY76PMH7',
+    color: 'purple',
   },
   {
     name: 'Apex Bot Dashboard',
@@ -54,6 +67,7 @@ const projects = [
     tech: ['Astro', 'React', 'Discord API', 'Chart.js', 'SQLite'],
     github: 'https://github.com/veekshith177-bot/Apex-Building-Bot',
     live: '#',
+    color: 'orange',
   },
   {
     name: 'Minecraft Skin Gallery',
@@ -69,24 +83,22 @@ const projects = [
     tech: ['Astro', 'Three.js', 'skinview3d', 'PlayerDB API'],
     github: 'https://github.com/veekshith177-bot/Minecraft-Skin-Gallery',
     live: 'https://minecraft-skin-gallery.netlify.app',
+    color: 'cyan',
   },
 ];
 
 const services = [
   {
-    icon: '⛏',
     title: 'Minecraft Plugin Builds',
     desc: 'Custom command packs, SMP utilities, staff tools, and small persistence layers for Spigot or Paper servers.',
     points: ['Commands', 'Permissions', 'SQLite', 'Config'],
   },
   {
-    icon: '🤖',
     title: 'Discord Bot Features',
     desc: 'Slash commands, ticket flows, giveaway logic, role checks, logging, and service automation for any community.',
     points: ['Discord.js', 'Buttons', 'Modals', 'Logs'],
   },
   {
-    icon: '🔧',
     title: 'Backend & Tooling',
     desc: 'Route handlers, data validation, storage fallbacks, and lightweight web UIs for community-facing tools.',
     points: ['Next.js', 'APIs', 'Supabase', 'Validation'],
@@ -95,7 +107,6 @@ const services = [
 ---
 
 <Base>
-  <div class="bg-grid"></div>
   <div class="bg-glow bg-glow-1"></div>
   <div class="bg-glow bg-glow-2"></div>
   <div class="scanline"></div>
@@ -103,8 +114,13 @@ const services = [
   <nav>
     <div class="container">
       <a href="#" class="logo">veekshith</a>
-      <ul class="nav-links">
-        <li><a href="#skills">Skills</a></li>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#skills">Stack</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="/building">Building</a></li>
         <li><a href="#services">Services</a></li>
@@ -119,15 +135,10 @@ const services = [
       <div class="hero-content">
         <div class="hero-badge">open for freelance builds</div>
         <h1>
-          I build <span class="hl">server tools</span><br />
-          that make communities<br />
-          run smoother
+          I build server tools that make<br />
+          <span class="hl-gradient">communities run smoother</span>
         </h1>
-        <p>
-          Minecraft plugin and Discord bot developer focused on command systems,
-          moderation utilities, ticket flows, giveaways, and SQLite-backed configs
-          that just work.
-        </p>
+        <p>Specialized in backend architecture, discord integrations, and game server tooling.</p>
         <div class="hero-actions">
           <a href="#projects" class="btn btn-primary">View Projects</a>
           <a href="https://discord.gg/2fakAhQpP8" target="_blank" class="btn btn-secondary">Join Discord</a>
@@ -139,22 +150,25 @@ const services = [
 
     <!-- ─── Stats ─── -->
     <section class="section reveal">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-value">3+</div>
-          <div class="stat-label">Years Experience</div>
+      <div class="stats-ribbon glass-panel">
+        <div class="stat-item">
+          <span class="material-symbols-outlined stat-icon">terminal</span>
+          <p class="stat-label">3+ Years Experience</p>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">6+</div>
-          <div class="stat-label">Builds Delivered</div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="material-symbols-outlined stat-icon">dns</span>
+          <p class="stat-label">6+ Builds Delivered</p>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">50+</div>
-          <div class="stat-label">Features Shipped</div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="material-symbols-outlined stat-icon">commit</span>
+          <p class="stat-label">50+ Features Shipped</p>
         </div>
-        <div class="stat-card">
-          <div class="stat-value">SMP</div>
-          <div class="stat-label">Primary Focus</div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="material-symbols-outlined stat-icon">layers</span>
+          <p class="stat-label">Full-Stack Focus</p>
         </div>
       </div>
     </section>
@@ -167,18 +181,18 @@ const services = [
         <div class="section-label">About</div>
         <h2 class="section-title">What I do</h2>
       </div>
-      <div class="about-text">
-        <p>
-          I build <strong>Minecraft plugins</strong> and <strong>Discord bots</strong>
+      <div class="about-text" style="max-width:680px">
+        <p style="font-size:16px;color:var(--obs-on-surface-variant);margin-bottom:16px;line-height:1.8">
+          I build <strong style="color:var(--obs-secondary)">Minecraft plugins</strong> and <strong style="color:var(--obs-secondary)">Discord bots</strong>
           for SMP servers and gaming communities. My stack is Java + Spigot/Paper on
           the plugin side, TypeScript + Discord.js for bots, and SQLite or Supabase
           when I need persistence.
         </p>
-        <p>
-          I built the <strong>Apex Building Bot</strong> — a full-service Discord bot
+        <p style="font-size:16px;color:var(--obs-on-surface-variant);margin-bottom:16px;line-height:1.8">
+          I built the <strong style="color:var(--obs-secondary)">Apex Building Bot</strong> — a full-service Discord bot
           with ticketing, moderation, giveaways, and application flows — plus its
-          <strong>web dashboard</strong> for real-time server analytics and management.
-          I also built <strong>Minecraft Skin Gallery</strong>, a 3D skin viewer that
+          <strong style="color:var(--obs-secondary)">web dashboard</strong> for real-time server analytics and management.
+          I also built <strong style="color:var(--obs-secondary)">Minecraft Skin Gallery</strong>, a 3D skin viewer that
           renders any player's skin in real-time. Every project gets readable code,
           scoped feature lists, and clear handoff notes.
         </p>
@@ -187,24 +201,41 @@ const services = [
 
     <hr />
 
-    <!-- ─── Skills ─── -->
+    <!-- ─── Skills / Bento ─── -->
     <section id="skills" class="section reveal">
       <div class="section-head">
         <div class="section-label">Skills</div>
-        <h2 class="section-title">What I work with</h2>
+        <h2 class="section-title">Technical stack</h2>
       </div>
-      <div class="skills-grid">
-        {skills.map((sk) => (
-          <div class="skill-card">
-            <h3>{sk.title}</h3>
-            <p>{sk.desc}</p>
-            <div class="skill-tags">
-              {sk.tags.map((t) => (
-                <span class="skill-tag">{t}</span>
-              ))}
+      <div class="bento-grid reveal-stagger">
+        {skills.map((sk) => {
+          const hoverClass = sk.color === 'purple' ? 'bento-hover-purple' : sk.color === 'cyan' ? 'bento-hover-cyan' : 'bento-hover-orange';
+          const spanCols = sk.span === 'large' ? 6 : sk.span === 'wide' ? 6 : 3;
+          const spanRows = sk.span === 'large' ? 2 : 1;
+          const isSmall = sk.span === 'small';
+          return (
+            <div class={`bento-card glass-panel ${hoverClass}`} style={`grid-column:span ${spanCols};grid-row:span ${spanRows};${isSmall ? 'align-items:center;justify-content:center;text-align:center' : ''}`}>
+              {!isSmall && <div class="bento-bg-glow"></div>}
+              <div class="bento-content">
+                {!isSmall && (
+                  <div class="bento-icon-box">
+                    <span class="material-symbols-outlined bento-icon" style={`color:${sk.color === 'purple' ? 'var(--obs-primary)' : sk.color === 'cyan' ? 'var(--obs-secondary)' : 'var(--obs-tertiary)'}`}>{sk.icon}</span>
+                  </div>
+                )}
+                {isSmall && (
+                  <span class="material-symbols-outlined" style={`font-size:32px;color:${sk.color === 'purple' ? 'var(--obs-primary)' : sk.color === 'cyan' ? 'var(--obs-secondary)' : 'var(--obs-tertiary)'};margin-bottom:12px`}>{sk.icon}</span>
+                )}
+                <h3 class="bento-title" style={`font-size:${isSmall ? '24px' : '32px'};${isSmall ? 'margin:0' : ''}`}>{sk.title}</h3>
+                {!isSmall && <p class="bento-desc">{sk.desc}</p>}
+              </div>
+              {!isSmall && (
+                <div class="bento-tags">
+                  {sk.tags.map((t) => <span class="bento-tag">{t}</span>)}
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
 
@@ -214,48 +245,58 @@ const services = [
     <section id="projects" class="section reveal">
       <div class="section-head">
         <div class="section-label">Projects</div>
-        <h2 class="section-title">Selected builds</h2>
+        <h2 class="section-title">Deployed architecture</h2>
       </div>
-      <div class="project-grid">
-        {projects.map((p) => (
-          <article class="project-card">
-            <div class="terminal-titlebar">
-              <span class="terminal-dot red"></span>
-              <span class="terminal-dot yellow"></span>
-              <span class="terminal-dot green"></span>
-              <span class="terminal-title">{p.name.toLowerCase().replace(/\s+/g, '-')}/</span>
-            </div>
-            <div class="terminal-body">
-              <div class="project-head">
-                <h3 class="project-name">{p.name}</h3>
-                <span class="project-type">{p.type}</span>
+      <div class="project-grid reveal-stagger">
+        {projects.map((p) => {
+          const hoverClass = p.color === 'purple' ? 'bento-hover-purple' : p.color === 'cyan' ? 'bento-hover-cyan' : 'bento-hover-orange';
+          const fileName = p.name.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z_]/g, '') + (p.type === 'Discord Bot' ? '.ts' : p.type === 'Web App' ? '.js' : '.jar');
+          return (
+            <article class={`project-card glass-panel ${hoverClass}`}>
+              <div class="project-macos-header">
+                <div class="project-macos-dots">
+                  <span class="project-macos-dot red"></span>
+                  <span class="project-macos-dot yellow"></span>
+                  <span class="project-macos-dot green"></span>
+                </div>
+                <span class="project-macos-title">{fileName}</span>
+                <div style="width:48px"></div>
               </div>
-              <p class="project-desc">{p.desc}</p>
-              <ul class="project-features">
-                {p.features.map((f) => (
-                  <li>{f}</li>
-                ))}
-              </ul>
-              <div class="project-tech">
-                {p.tech.map((t) => (
-                  <span class="project-tech-tag">{t}</span>
-                ))}
+              <div class="project-card-image" style="margin:0 24px 24px">
+                {p.name === 'Minecraft Skin Gallery' ? (
+                  <span class="material-symbols-outlined" style="font-size:64px;color:rgba(0,218,243,0.5)">view_in_ar</span>
+                ) : (
+                  <span class="material-symbols-outlined" style={`font-size:64px;color:${p.color === 'purple' ? 'rgba(220,184,255,0.4)' : 'rgba(255,184,115,0.4)'}`}>deployed_code</span>
+                )}
               </div>
-              <div class="project-links">
-                <a href={p.github} target="_blank" rel="noopener noreferrer" class="project-link">
-                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                  {p.github !== '#' ? 'Source' : 'Private'}
-                </a>
-                <a href={p.live} target="_blank" rel="noopener noreferrer" class="project-link">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  {p.github !== '#' ? 'Live' : 'Private'}
-                </a>
+              <div class="project-card-body">
+                <div class="project-head">
+                  <h3 class="project-name">{p.name}</h3>
+                  <span class="project-type">{p.type}</span>
+                </div>
+                <p class="project-desc">{p.desc}</p>
+                <ul class="project-features">
+                  {p.features.map((f) => <li>{f}</li>)}
+                </ul>
+                <div class="project-tech">
+                  {p.tech.map((t) => <span class="project-tech-tag">{t}</span>)}
+                </div>
+                <div class="project-links">
+                  <a href={p.github} target="_blank" rel="noopener noreferrer" class="project-link">
+                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    {p.github !== '#' ? 'Source' : 'Private'}
+                  </a>
+                  <a href={p.live} target="_blank" rel="noopener noreferrer" class="project-link">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    {p.live !== '#' ? 'Live' : 'Private'}
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
-      <div style="text-align:center;margin-top:28px">
+      <div style="text-align:center;margin-top:40px">
         <a href="/building" class="btn btn-secondary" style="font-family:'JetBrains Mono',monospace">
           △ view projects in progress →
         </a>
@@ -270,19 +311,28 @@ const services = [
         <div class="section-label">Services</div>
         <h2 class="section-title">What I can build for you</h2>
       </div>
-      <div class="services-grid">
-        {services.map((svc) => (
-          <div class="service-card">
-            <div class="service-icon">{svc.icon}</div>
-            <h3>{svc.title}</h3>
-            <p>{svc.desc}</p>
-            <div class="service-points">
-              {svc.points.map((pt) => (
-                <span class="service-point">{pt}</span>
-              ))}
+      <div class="bento-grid reveal-stagger">
+        {services.map((svc, i) => {
+          const colors = ['purple', 'cyan', 'orange'];
+          const icons = ['terminal', 'smart_toy', 'build_circle'];
+          const color = colors[i];
+          const hoverClass = color === 'purple' ? 'bento-hover-purple' : color === 'cyan' ? 'bento-hover-cyan' : 'bento-hover-orange';
+          return (
+            <div class={`bento-card glass-panel ${hoverClass}`} style="grid-column:span 4;grid-row:span 1">
+              <div class="bento-bg-glow"></div>
+              <div class="bento-content">
+                <div class="bento-icon-box">
+                  <span class="material-symbols-outlined bento-icon" style={`color:${color === 'purple' ? 'var(--obs-primary)' : color === 'cyan' ? 'var(--obs-secondary)' : 'var(--obs-tertiary)'}`}>{icons[i]}</span>
+                </div>
+                <h3 class="bento-title" style="font-size:24px">{svc.title}</h3>
+                <p class="bento-desc">{svc.desc}</p>
+              </div>
+              <div class="bento-tags">
+                {svc.points.map((pt) => <span class="bento-tag">{pt}</span>)}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
 
@@ -294,22 +344,16 @@ const services = [
         <h2>Let's build something</h2>
         <p>Got a server that needs custom tools or a community that deserves better automation? Reach out.</p>
         <div class="contact-links">
-          <a href="mailto:veekshith177@gmail.com" class="contact-link">Email Me</a>
-          <a href="https://github.com/veekshith177-bot" target="_blank" class="contact-link">
-            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            GitHub
-          </a>
-          <a href="https://discord.gg/2fakAhQpP8" target="_blank" class="contact-link">
-            <svg viewBox="0 0 640 512" fill="currentColor"><path d="M524.5 69.8a1.5 1.5 0 0 0-.8-.7A485 485 0 0 0 404.1 32a1.8 1.8 0 0 0-1.9.7 338 338 0 0 0-14.9 30.5 446 446 0 0 0-134.4 0 297 297 0 0 0-14.9-30.5 1.9 1.9 0 0 0-1.9-.7 483 483 0 0 0-119.8 37.1 1.7 1.7 0 0 0-.8.7C35.5 196.5-6.8 319.9 3.1 441.9c0 .2 0 .4.1.6.2 1.4.8 2.7 1.7 3.8a486 486 0 0 0 147.2 74.2c1.6.5 3.4-.2 4.4-1.7a311 311 0 0 0 25.9-43.9c1.2-2.7.1-5.8-2.5-7a390 390 0 0 1-38.9-18.5 3.9 3.9 0 0 1-.9-6.6c2.6-1.9 5.2-3.9 7.7-5.9.5-.4 1.2-.5 1.8-.3 82.4 37.6 171.6 37.6 253.9 0 .6-.2 1.3-.1 1.8.3 2.5 2 5.1 4 7.7 5.9.8.6 1 1.8.6 2.8l-.4.9a1.6 1.6 0 0 1-.5 1.1c-12.6 7.2-25.8 13.3-39.3 18.5-2.7 1.2-3.7 4.3-2.5 7a316 316 0 0 0 26.2 44c1 1.5 2.8 2.2 4.4 1.7a487 487 0 0 0 147.8-74.2 5.8 5.8 0 0 0 1.7-3.8c.1-.2.1-.4.1-.6 10.8-131.6-19.5-253-83.7-372.1zM215.4 370.6c-24.7 0-44.9-22.7-44.9-50.4s19.8-50.4 44.9-50.4 45.2 22.7 44.9 50.4c0 27.7-20.1 50.4-44.9 50.4zm209.2 0c-24.7 0-44.9-22.7-44.9-50.4s19.8-50.4 44.9-50.4 45.2 22.7 44.9 50.4c0 27.7-20.1 50.4-44.9 50.4z"/></svg>
-            Discord
-          </a>
+          <a href="mailto:veekshith177@gmail.com" class="contact-link">Email</a>
+          <a href="https://github.com/veekshith177-bot" target="_blank" class="contact-link">GitHub</a>
+          <a href="https://discord.gg/2fakAhQpP8" target="_blank" class="contact-link">Discord</a>
         </div>
       </div>
     </section>
 
     <!-- ─── Footer ─── -->
     <footer>
-      <p><span class="green">veekshith</span> &copy; 2026 &nbsp;·&nbsp; built with astro</p>
+      <p><span class="accent">veekshith</span> &copy; 2026 &nbsp;·&nbsp; built with astro</p>
     </footer>
   </div>
 </Base>
