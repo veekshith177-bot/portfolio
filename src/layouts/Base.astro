@@ -5,7 +5,7 @@ interface Props {
   title?: string;
 }
 
-const { title = 'Veekshith — dev portfolio' } = Astro.props;
+const { title = 'Veekshith — Developer & Builder' } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -15,13 +15,11 @@ const { title = 'Veekshith — dev portfolio' } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    <meta name="description" content="Backend Engineer & Discord Bot Architect — Veekshith" />
+    <meta name="description" content="Veekshith — Web Developer, Discord Bot Architect, and Minecraft Plugin Builder." />
     <meta name="theme-color" content="#0a0a0a" />
   </head>
   <body>
-    <div class="bg-grid-pattern"></div>
-
-    <div class="scroll-progress">
+    <div class="scroll-progress" id="scrollProgress">
       <div class="scroll-progress-bar" id="scrollProgressBar"></div>
     </div>
 
@@ -29,280 +27,111 @@ const { title = 'Veekshith — dev portfolio' } = Astro.props;
 
     <div class="nav-overlay" id="navOverlay"></div>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="18 15 12 9 6 15"/>
       </svg>
     </button>
 
-    <button id="music-toggle" class="music-btn" aria-label="Toggle music" title="Toggle ambient music">
-      <svg class="music-icon music-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 18V5l12-2v13"/>
-        <circle cx="6" cy="18" r="3"/>
-        <circle cx="18" cy="16" r="3"/>
-      </svg>
-      <svg class="music-icon music-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 18V5l12-2v13"/>
-        <circle cx="6" cy="18" r="3"/>
-        <circle cx="18" cy="16" r="3"/>
-        <line x1="1" y1="1" x2="23" y2="23"/>
-      </svg>
-    </button>
-
-    <script type="module">
+    <script>
     // Scroll progress bar
-    const progressBar = document.getElementById('scrollProgressBar');
-    function updateScrollProgress() {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      requestAnimationFrame(() => {
-        progressBar.style.width = progress + '%';
-      });
-    }
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    (function() {
+      const bar = document.getElementById('scrollProgressBar');
+      if (!bar) return;
+      function update() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+      }
+      window.addEventListener('scroll', update, { passive: true });
+    })();
 
     // Back to top
-    const backToTop = document.getElementById('backToTop');
-    function toggleBackToTop() {
-      if (window.scrollY > 400) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    }
-    window.addEventListener('scroll', toggleBackToTop, { passive: true });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    (function() {
+      const btn = document.getElementById('backToTop');
+      if (!btn) return;
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
 
     // Mobile nav
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    const navOverlay = document.getElementById('navOverlay');
-
-    function closeNav() {
-      navToggle.classList.remove('open');
-      navLinks.classList.remove('open');
-      navOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    function openNav() {
-      navToggle.classList.add('open');
-      navLinks.classList.add('open');
-      navOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    if (navToggle && navLinks && navOverlay) {
-      navToggle.addEventListener('click', () => {
-        if (navLinks.classList.contains('open')) {
-          closeNav();
-        } else {
-          openNav();
-        }
-      });
-      navOverlay.addEventListener('click', closeNav);
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeNav);
-      });
-    }
-
-    // Active nav link tracking
-    const sections = document.querySelectorAll('section[id]');
-    const navLinkEls = document.querySelectorAll('.nav-links a[href^="#"]');
-    function updateActiveNav() {
-      const scrollPos = window.scrollY + 100;
-      let current = '';
-      sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-          current = '#' + section.getAttribute('id');
-        }
-      });
-      navLinkEls.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === current);
-      });
-    }
-    window.addEventListener('scroll', updateActiveNav, { passive: true });
-    </script>
-
-    <script>
-    // Ambient music (IIFE for compatibility)
     (function() {
-      let ctx = null;
-      let masterGain = null;
-      let isPlaying = false;
-      let isMuted = false;
-      let nodes = [];
-      let arpeggioTimer = null;
-      let effectsTimer = null;
-      let started = false;
+      const toggle = document.getElementById('navToggle');
+      const links = document.getElementById('navLinks');
+      const overlay = document.getElementById('navOverlay');
+      if (!toggle || !links || !overlay) return;
 
-      const btn = document.getElementById('music-toggle');
-
-      async function init() {
-        if (ctx) return;
-        ctx = new (window.AudioContext || window.webkitAudioContext)();
-        masterGain = ctx.createGain();
-        masterGain.gain.value = 0.12;
-        masterGain.connect(ctx.destination);
+      function close() {
+        toggle.classList.remove('open');
+        links.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
       }
 
-      function createNoiseBuffer() {
-        const bufSize = ctx.sampleRate * 2;
-        const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
-        const data = buf.getChannelData(0);
-        for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
-        return buf;
+      function open() {
+        toggle.classList.add('open');
+        links.classList.add('open');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
       }
 
-      function startPad() {
-        const osc1 = ctx.createOscillator();
-        const osc2 = ctx.createOscillator();
-        const gain = ctx.createGain();
-        const filter = ctx.createBiquadFilter();
+      toggle.addEventListener('click', () => {
+        links.classList.contains('open') ? close() : open();
+      });
 
-        osc1.type = 'sawtooth'; osc1.frequency.value = 55;
-        osc2.type = 'sine'; osc2.frequency.value = 110;
-        filter.type = 'lowpass'; filter.frequency.value = 180; filter.Q.value = 4;
-        gain.gain.setValueAtTime(0, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.03, ctx.currentTime + 3);
+      overlay.addEventListener('click', close);
+      links.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', close);
+      });
+    })();
 
-        osc1.connect(filter); osc2.connect(filter);
-        filter.connect(gain); gain.connect(masterGain);
+    // Active nav link
+    (function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+      if (!sections.length || !navLinks.length) return;
 
-        const lfo = ctx.createOscillator();
-        const lfoGain = ctx.createGain();
-        lfo.frequency.value = 0.08; lfoGain.gain.value = 30;
-        lfo.connect(lfoGain); lfoGain.connect(filter.frequency);
-        lfo.start();
-
-        osc1.start(); osc2.start();
-        nodes.push(osc1, osc2, lfo);
-
-        const noiseSrc = ctx.createBufferSource();
-        noiseSrc.buffer = createNoiseBuffer();
-        noiseSrc.loop = true;
-        const noiseFilter = ctx.createBiquadFilter();
-        noiseFilter.type = 'bandpass'; noiseFilter.frequency.value = 80; noiseFilter.Q.value = 2;
-        const noiseGain = ctx.createGain();
-        noiseGain.gain.value = 0.008;
-        noiseSrc.connect(noiseFilter);
-        noiseFilter.connect(noiseGain);
-        noiseGain.connect(masterGain);
-        noiseSrc.start();
-        nodes.push(noiseSrc);
-      }
-
-      const pentatonic = [220, 261.63, 293.66, 349.23, 392, 440, 523.25, 587.33, 659.25, 783.99];
-      let noteIdx = 0;
-
-      function scheduleArpeggio() {
-        if (!isPlaying) return;
-        const freq = pentatonic[noteIdx % pentatonic.length];
-        noteIdx = (noteIdx + 1) % pentatonic.length;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine'; osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.015, ctx.currentTime + 0.3);
-        gain.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 1.5);
-        osc.connect(gain); gain.connect(masterGain);
-        osc.start(); osc.stop(ctx.currentTime + 1.6);
-        arpeggioTimer = setTimeout(scheduleArpeggio, 1200 + Math.random() * 600);
-      }
-
-      function scheduleEffect() {
-        if (!isPlaying) return;
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = Math.random() > 0.5 ? 'square' : 'sine';
-        osc.frequency.value = 600 + Math.random() * 800;
-        gain.gain.setValueAtTime(0.008, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
-        osc.connect(gain); gain.connect(masterGain);
-        osc.start(); osc.stop(ctx.currentTime + 0.1);
-        effectsTimer = setTimeout(scheduleEffect, 5000 + Math.random() * 7000);
-      }
-
-      function playStartupSound() {
-        [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.type = 'sine'; osc.frequency.value = freq;
-          gain.gain.setValueAtTime(0, ctx.currentTime + i * 0.12);
-          gain.gain.linearRampToValueAtTime(0.04, ctx.currentTime + i * 0.12 + 0.05);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.12 + 0.3);
-          osc.connect(gain); gain.connect(masterGain);
-          osc.start(ctx.currentTime + i * 0.12);
-          osc.stop(ctx.currentTime + i * 0.12 + 0.35);
+      function update() {
+        const pos = window.scrollY + 120;
+        let current = '';
+        sections.forEach(s => {
+          const top = s.offsetTop;
+          const h = s.offsetHeight;
+          if (pos >= top && pos < top + h) {
+            current = '#' + s.getAttribute('id');
+          }
+        });
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === current);
         });
       }
 
-      function startMusic() {
-        if (isPlaying) return;
-        isPlaying = true; isMuted = false;
-        if (ctx.state === 'suspended') ctx.resume();
-        startPad();
-        playStartupSound();
-        setTimeout(scheduleArpeggio, 1800);
-        setTimeout(scheduleEffect, 3000);
-        btn.classList.add('playing');
-      }
-
-      function stopMusic() {
-        isPlaying = false;
-        clearTimeout(arpeggioTimer); clearTimeout(effectsTimer);
-        nodes.forEach(n => { try { n.stop(); } catch(e) {} });
-        nodes = [];
-        if (ctx && ctx.state !== 'closed') { ctx.close().catch(() => {}); ctx = null; masterGain = null; }
-        btn.classList.remove('playing');
-      }
-
-      function toggleMute() {
-        if (!ctx || !masterGain) return;
-        isMuted = !isMuted;
-        masterGain.gain.value = isMuted ? 0 : 0.12;
-        btn.classList.toggle('muted', isMuted);
-      }
-
-      async function handleToggle() {
-        if (!started) {
-          await init();
-          startMusic();
-          started = true;
-          btn.classList.add('started');
-          return;
-        }
-        if (isPlaying) toggleMute();
-        else { await init(); startMusic(); }
-      }
-
-      if (btn) btn.addEventListener('click', handleToggle);
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     })();
 
     // Scroll reveal
     (function() {
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-        document.addEventListener('DOMContentLoaded', () => {
-          document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
-        });
-      } else {
-        document.addEventListener('DOMContentLoaded', () => {
-          document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => el.classList.add('visible'));
-        });
+      if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => el.classList.add('visible'));
+        return;
       }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+      });
     })();
     </script>
   </body>

@@ -3,127 +3,96 @@ import Base from '../layouts/Base.astro';
 
 const skills = [
   {
-    title: 'Discord.js Ecosystems',
-    desc: 'Building resilient, shard-ready bots that scale across thousands of guilds. Custom dashboards, interaction handling, and caching strategies.',
+    title: 'Discord.js',
+    desc: 'Bots that don\'t fall over when you have a thousand servers. Slash commands, tickets, giveaways — I\'ve built it all.',
     tags: ['TypeScript', 'Redis', 'Sharding'],
-    icon: 'smart_toy',
-    color: 'purple',
-    span: 'large',
+    icon: '#',
   },
   {
-    title: 'Java & Spigot API',
-    desc: 'Custom game modes, economy systems, and performance-optimized plugins for heavy-load Minecraft networks.',
-    tags: ['Java', 'Spigot', 'PaperMC', 'Bukkit API'],
-    icon: 'code_blocks',
-    color: 'cyan',
-    span: 'wide',
+    title: 'Java / Spigot',
+    desc: 'Plugins that actually perform. Minigames, economies, staff tools — whatever the server needs.',
+    tags: ['Java', 'PaperMC', 'Bukkit API'],
+    icon: '#',
   },
   {
-    title: 'SQLite / DBs',
-    desc: 'Lightweight data layers with simple schemas, validation, and clear fallback behavior.',
-    tags: ['SQLite', 'Supabase', 'REST APIs'],
-    icon: 'database',
-    color: 'orange',
-    span: 'small',
+    title: 'Web Dev',
+    desc: 'Dashboards, landing pages, skin viewers — if it needs to exist on the web, I can put it there.',
+    tags: ['Astro', 'React', 'REST APIs'],
+    icon: '#',
   },
   {
-    title: 'Docker & CI/CD',
-    desc: 'Containerized deployments and automated pipelines for reliable, reproducible builds.',
+    title: 'Infra & DevOps',
+    desc: 'Docker, CI/CD, Linux servers. I make sure the stuff I build actually stays running.',
     tags: ['Docker', 'GitHub Actions', 'Linux'],
-    icon: 'build_circle',
-    color: 'purple',
-    span: 'small',
+    icon: '#',
   },
 ];
 
 const projects = [
   {
+    name: 'Vanilla-Core',
+    type: 'Minecraft Plugin',
+    desc: 'All-in-one SMP plugin. Essentials commands, staff tools, economy — basically the backbone for a survival server. Live right now but I\'m still chasing bugs.',
+    features: [
+      'Homes, warps, tpa with SQLite persistence',
+      'Staff tools: freeze, vanish, invsee, staff chat',
+      'Player economy — balance, pay, shop commands',
+      'Spawn and random tps with cooldowns so nobody abuses em',
+    ],
+    tech: ['Java', 'Spigot', 'PaperMC', 'SQLite', 'Gradle'],
+    github: 'https://github.com/veekshith177-bot/Vanilla-Core.git',
+    status: 'alpha',
+    badges: ['released', 'alpha'],
+  },
+  {
     name: 'Apex Building Bot',
     type: 'Discord Bot',
-    desc: 'Full-service Discord bot for Donut SMP and Apex communities. Ticketing, moderation, giveaways, LOA tracking, builder applications, and more — all backed by SQLite with WAL mode.',
+    desc: 'Discord bot for Donut SMP and Apex. Tickets, moderation, giveaways, builder apps — the works. Still running in production.',
     features: [
-      'Ticket panels: General, Build, Digout, Refund, Regear + more',
-      'Moderation: warn, mute, tempban, slowmode, lock/unlock',
-      'Split or Steal giveaway system with daily auto-giveaways',
-      'Builder application forms with cooldown window',
-      'DM-based builder rating and feedback system',
+      'Ticket panels: General, Build, Digout, Refund, Regear',
+      'Moderation: warn, mute, tempban, slowmode, lock',
+      'Split or Steal giveaways with daily auto runs',
+      'DM-based builder ratings so staff can review builders',
     ],
     tech: ['TypeScript', 'Node.js', 'Discord.js v14', 'better-sqlite3'],
     github: 'https://github.com/veekshith177-bot/Apex-Building-Bot',
     live: 'https://discord.gg/n7qY76PMH7',
-    color: 'purple',
-  },
-  {
-    name: 'Apex Bot Dashboard',
-    type: 'Web App',
-    desc: 'Web dashboard companion for the Apex Building Bot — view command stats, server analytics, moderation logs, and manage your Discord server visually in real time.',
-    features: [
-      'Real-time command usage metrics and graphs',
-      'Server activity and member analytics',
-      'Moderation log viewer with search',
-      'Role and permission management UI',
-      'Direct integration with Apex Building Bot',
-    ],
-    tech: ['Astro', 'React', 'Discord API', 'Chart.js', 'SQLite'],
-    github: 'https://github.com/veekshith177-bot/Apex-Building-Bot',
-    live: '#',
-    color: 'orange',
+    status: 'released',
+    badges: ['released'],
   },
   {
     name: 'Minecraft Skin Gallery',
     type: 'Web App',
-    desc: '3D Minecraft skin viewer. Type any username and see their skin rendered in real-time with 6 animations, cape support, auto model detection, and a full Minecraft-themed UI.',
+    desc: 'Type any Minecraft username and see their skin rendered in 3D. 6 animations, cape support, auto detects Alex vs Steve arms. Kinda fun to mess with.',
     features: [
       'Real-time 3D rendering with skinview3d + Three.js',
       '6 animations: Walk, Run, Fly, Wave, Crouch, Swim',
       'Auto-detects Alex vs Steve arm models',
-      'Cape support for any player who has one',
-      'Responsive across desktop, tablet, and mobile',
+      'Cape support if the player has one',
     ],
     tech: ['Astro', 'Three.js', 'skinview3d', 'PlayerDB API'],
     github: 'https://github.com/veekshith177-bot/Minecraft-Skin-Gallery',
     live: 'https://minecraft-skin-gallery.netlify.app',
-    color: 'cyan',
-  },
-];
-
-const services = [
-  {
-    title: 'Minecraft Plugin Builds',
-    desc: 'Custom command packs, SMP utilities, staff tools, and small persistence layers for Spigot or Paper servers.',
-    points: ['Commands', 'Permissions', 'SQLite', 'Config'],
-  },
-  {
-    title: 'Discord Bot Features',
-    desc: 'Slash commands, ticket flows, giveaway logic, role checks, logging, and service automation for any community.',
-    points: ['Discord.js', 'Buttons', 'Modals', 'Logs'],
-  },
-  {
-    title: 'Backend & Tooling',
-    desc: 'Route handlers, data validation, storage fallbacks, and lightweight web UIs for community-facing tools.',
-    points: ['Next.js', 'APIs', 'Supabase', 'Validation'],
+    status: 'released',
+    badges: ['released'],
   },
 ];
 ---
 
 <Base>
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
-  <div class="scanline"></div>
-
   <nav>
     <div class="container">
-      <a href="#" class="logo">veekshith</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+      <a href="/" class="logo">veekshith<span>.</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
         <span></span>
         <span></span>
         <span></span>
       </button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#skills">Stack</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="/building">Building</a></li>
-        <li><a href="#services">Services</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -133,15 +102,19 @@ const services = [
     <!-- ─── Hero ─── -->
     <section class="hero">
       <div class="hero-content">
-        <div class="hero-badge">open for freelance builds</div>
+        <div class="hero-tag">open for work</div>
         <h1>
-          I build server tools that make<br />
-          <span class="hl-gradient">communities run smoother</span>
+          I make stuff<br />
+          <span class="highlight">for game servers</span><br />
+          <span class="fade">and the people on em</span>
         </h1>
-        <p>Specialized in backend architecture, discord integrations, and game server tooling.</p>
+        <p>
+          Minecraft plugins, Discord bots, web dashboards — if it runs a gaming community, 
+          I've probably built something like it. Been at this for a few years now.
+        </p>
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="https://discord.gg/2fakAhQpP8" target="_blank" class="btn btn-secondary">Join Discord</a>
+          <a href="#projects" class="btn btn-primary">See my work</a>
+          <a href="#contact" class="btn btn-secondary">Hit me up</a>
         </div>
       </div>
     </section>
@@ -150,25 +123,25 @@ const services = [
 
     <!-- ─── Stats ─── -->
     <section class="section reveal">
-      <div class="stats-ribbon glass-panel">
+      <div class="stats-ribbon">
         <div class="stat-item">
-          <span class="material-symbols-outlined stat-icon">terminal</span>
-          <p class="stat-label">3+ Years Experience</p>
+          <span class="stat-number">3+</span>
+          <span class="stat-label">Years Building</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="material-symbols-outlined stat-icon">dns</span>
-          <p class="stat-label">6+ Builds Delivered</p>
+          <span class="stat-number">6+</span>
+          <span class="stat-label">Projects Delivered</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="material-symbols-outlined stat-icon">commit</span>
-          <p class="stat-label">50+ Features Shipped</p>
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Features Shipped</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <span class="material-symbols-outlined stat-icon">layers</span>
-          <p class="stat-label">Full-Stack Focus</p>
+          <span class="stat-number">Full</span>
+          <span class="stat-label">Stack Development</span>
         </div>
       </div>
     </section>
@@ -176,66 +149,130 @@ const services = [
     <hr />
 
     <!-- ─── About ─── -->
-    <section class="section reveal">
-      <div class="section-head">
+    <section id="about" class="section reveal">
+      <div class="section-header">
         <div class="section-label">About</div>
         <h2 class="section-title">What I do</h2>
       </div>
-      <div class="about-text" style="max-width:680px">
-        <p style="font-size:16px;color:var(--obs-on-surface-variant);margin-bottom:16px;line-height:1.8">
-          I build <strong style="color:var(--obs-secondary)">Minecraft plugins</strong> and <strong style="color:var(--obs-secondary)">Discord bots</strong>
-          for SMP servers and gaming communities. My stack is Java + Spigot/Paper on
-          the plugin side, TypeScript + Discord.js for bots, and SQLite or Supabase
-          when I need persistence.
+      <div class="about-text">
+        <p>
+          I build <strong>Minecraft plugins</strong> and <strong>Discord bots</strong>
+          for SMP servers. Java + Spigot/Paper on the plugin side, TypeScript + 
+          Discord.js for bots, and SQLite when I need stuff to persist.
         </p>
-        <p style="font-size:16px;color:var(--obs-on-surface-variant);margin-bottom:16px;line-height:1.8">
-          I built the <strong style="color:var(--obs-secondary)">Apex Building Bot</strong> — a full-service Discord bot
-          with ticketing, moderation, giveaways, and application flows — plus its
-          <strong style="color:var(--obs-secondary)">web dashboard</strong> for real-time server analytics and management.
-          I also built <strong style="color:var(--obs-secondary)">Minecraft Skin Gallery</strong>, a 3D skin viewer that
-          renders any player's skin in real-time. Every project gets readable code,
-          scoped feature lists, and clear handoff notes.
+        <p>
+          Built the <strong>Apex Building Bot</strong> — Discord bot with ticketing, 
+          moderation, giveaways, the whole package — and a <strong>web dashboard</strong> 
+          so server staff can see what's happening in real time. Also made 
+          <strong>Minecraft Skin Gallery</strong>, a 3D skin viewer that works for any 
+          username you throw at it.
+        </p>
+        <p>
+          Right now I'm deep in <strong>Vanilla-Core</strong>, an SMP plugin that's 
+          live but still got bugs I'm squashing. Every project I ship comes with 
+          readable code and a readme that actually tells you what's what.
         </p>
       </div>
     </section>
 
     <hr />
 
-    <!-- ─── Skills / Bento ─── -->
+    <!-- ─── Experience ─── -->
+    <section id="experience" class="section reveal">
+      <div class="section-header">
+        <div class="section-label">Experience</div>
+        <h2 class="section-title">Where I've worked</h2>
+      </div>
+      <div class="experience-list">
+        <div class="experience-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-title">Web Developer</h3>
+              <p class="exp-org">Purxiy SMP</p>
+            </div>
+            <span class="exp-period">2025 — Present</span>
+          </div>
+          <div class="exp-details">
+            <p>
+              Built the web platform from the ground up — landing page, community dashboards, 
+              and tools that bridge the website with their Discord and Minecraft server. 
+              Working with the team to make sure players can find what they need without 
+              jumping through hoops.
+            </p>
+          </div>
+          <div class="exp-links">
+            <a href="https://purxiysmp.vercel.app/" target="_blank" rel="noopener noreferrer" class="exp-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              purxiysmp.vercel.app
+            </a>
+            <a href="https://discord.gg/purxiy" target="_blank" rel="noopener noreferrer" class="exp-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              discord.gg/purxiy
+            </a>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-title">Admin / Developer</h3>
+              <p class="exp-org">Vanilla SMP</p>
+            </div>
+            <span class="exp-period">2024 — 2025</span>
+          </div>
+          <div class="exp-details">
+            <p>
+              Ran the server backend, built custom plugins for the survival experience, 
+              and kept things running on the admin side. Handled everything from plugin 
+              configs to player reports to making sure the server didn't lag itself 
+              to death when folks started building crazy farms.
+            </p>
+          </div>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-title">Developer</h3>
+              <p class="exp-org">Allay SMP / Blossom SMP</p>
+            </div>
+            <span class="exp-period">2023 — 2024</span>
+          </div>
+          <div class="exp-details">
+            <p>
+              Came up through these servers building Discord bots and learning the ropes 
+              of Minecraft plugin dev. Made moderation bots, ticket systems, and a bunch 
+              of small plugins that taught me how to actually ship stuff that people use. 
+              Both servers are where I cut my teeth before moving on to bigger projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ─── Skills ─── -->
     <section id="skills" class="section reveal">
-      <div class="section-head">
+      <div class="section-header">
         <div class="section-label">Skills</div>
         <h2 class="section-title">Technical stack</h2>
       </div>
-      <div class="bento-grid reveal-stagger">
-        {skills.map((sk) => {
-          const hoverClass = sk.color === 'purple' ? 'bento-hover-purple' : sk.color === 'cyan' ? 'bento-hover-cyan' : 'bento-hover-orange';
-          const spanCols = sk.span === 'large' ? 6 : sk.span === 'wide' ? 6 : 3;
-          const spanRows = sk.span === 'large' ? 2 : 1;
-          const isSmall = sk.span === 'small';
-          return (
-            <div class={`bento-card glass-panel ${hoverClass}`} style={`grid-column:span ${spanCols};grid-row:span ${spanRows};${isSmall ? 'align-items:center;justify-content:center;text-align:center' : ''}`}>
-              {!isSmall && <div class="bento-bg-glow"></div>}
-              <div class="bento-content">
-                {!isSmall && (
-                  <div class="bento-icon-box">
-                    <span class="material-symbols-outlined bento-icon" style={`color:${sk.color === 'purple' ? 'var(--obs-primary)' : sk.color === 'cyan' ? 'var(--obs-secondary)' : 'var(--obs-tertiary)'}`}>{sk.icon}</span>
-                  </div>
-                )}
-                {isSmall && (
-                  <span class="material-symbols-outlined" style={`font-size:32px;color:${sk.color === 'purple' ? 'var(--obs-primary)' : sk.color === 'cyan' ? 'var(--obs-secondary)' : 'var(--obs-tertiary)'};margin-bottom:12px`}>{sk.icon}</span>
-                )}
-                <h3 class="bento-title" style={`font-size:${isSmall ? '24px' : '32px'};${isSmall ? 'margin:0' : ''}`}>{sk.title}</h3>
-                {!isSmall && <p class="bento-desc">{sk.desc}</p>}
+      <div class="skills-grid reveal-stagger">
+        {skills.map((sk) => (
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <div class="skill-card-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
               </div>
-              {!isSmall && (
-                <div class="bento-tags">
-                  {sk.tags.map((t) => <span class="bento-tag">{t}</span>)}
-                </div>
-              )}
+              <h3>{sk.title}</h3>
             </div>
-          );
-        })}
+            <p>{sk.desc}</p>
+            <div class="skill-tags">
+              {sk.tags.map((t) => <span class="skill-tag">{t}</span>)}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
 
@@ -243,96 +280,50 @@ const services = [
 
     <!-- ─── Projects ─── -->
     <section id="projects" class="section reveal">
-      <div class="section-head">
+      <div class="section-header">
         <div class="section-label">Projects</div>
-        <h2 class="section-title">Deployed architecture</h2>
+        <h2 class="section-title">What I've built</h2>
+        <p class="section-subtitle">Plugins, bots, and web apps — the stuff I've shipped.</p>
       </div>
       <div class="project-grid reveal-stagger">
-        {projects.map((p) => {
-          const hoverClass = p.color === 'purple' ? 'bento-hover-purple' : p.color === 'cyan' ? 'bento-hover-cyan' : 'bento-hover-orange';
-          const fileName = p.name.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z_]/g, '') + (p.type === 'Discord Bot' ? '.ts' : p.type === 'Web App' ? '.js' : '.jar');
-          return (
-            <article class={`project-card glass-panel ${hoverClass}`}>
-              <div class="project-macos-header">
-                <div class="project-macos-dots">
-                  <span class="project-macos-dot red"></span>
-                  <span class="project-macos-dot yellow"></span>
-                  <span class="project-macos-dot green"></span>
-                </div>
-                <span class="project-macos-title">{fileName}</span>
-                <div style="width:48px"></div>
+        {projects.map((p) => (
+          <article class={`project-card${p.status === 'alpha' ? ' featured' : ''}`}>
+            {p.badges && (
+              <div class="project-badges">
+                {p.badges.map((b) => (
+                  <span class={`project-badge ${b}`}>
+                    {b === 'released' ? '● Released' : b === 'alpha' ? '⚠ Early Alpha — Active Debugging' : ''}
+                  </span>
+                ))}
               </div>
-              <div class="project-card-image" style="margin:0 24px 24px">
-                {p.name === 'Minecraft Skin Gallery' ? (
-                  <span class="material-symbols-outlined" style="font-size:64px;color:rgba(0,218,243,0.5)">view_in_ar</span>
-                ) : (
-                  <span class="material-symbols-outlined" style={`font-size:64px;color:${p.color === 'purple' ? 'rgba(220,184,255,0.4)' : 'rgba(255,184,115,0.4)'}`}>deployed_code</span>
+            )}
+            <div class="project-body">
+              <div class="project-head">
+                <h3 class="project-name">{p.name}</h3>
+                <span class="project-type">{p.type}</span>
+              </div>
+              <p class="project-desc">{p.desc}</p>
+              <ul class="project-features">
+                {p.features.map((f) => <li>{f}</li>)}
+              </ul>
+              <div class="project-tech">
+                {p.tech.map((t) => <span class="project-tech-tag">{t}</span>)}
+              </div>
+              <div class="project-links">
+                <a href={p.github} target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                  Source
+                </a>
+                {p.live && (
+                  <a href={p.live} target="_blank" rel="noopener noreferrer" class="project-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    Live
+                  </a>
                 )}
               </div>
-              <div class="project-card-body">
-                <div class="project-head">
-                  <h3 class="project-name">{p.name}</h3>
-                  <span class="project-type">{p.type}</span>
-                </div>
-                <p class="project-desc">{p.desc}</p>
-                <ul class="project-features">
-                  {p.features.map((f) => <li>{f}</li>)}
-                </ul>
-                <div class="project-tech">
-                  {p.tech.map((t) => <span class="project-tech-tag">{t}</span>)}
-                </div>
-                <div class="project-links">
-                  <a href={p.github} target="_blank" rel="noopener noreferrer" class="project-link">
-                    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                    {p.github !== '#' ? 'Source' : 'Private'}
-                  </a>
-                  <a href={p.live} target="_blank" rel="noopener noreferrer" class="project-link">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    {p.live !== '#' ? 'Live' : 'Private'}
-                  </a>
-                </div>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-      <div style="text-align:center;margin-top:40px">
-        <a href="/building" class="btn btn-secondary" style="font-family:'JetBrains Mono',monospace">
-          △ view projects in progress →
-        </a>
-      </div>
-    </section>
-
-    <hr />
-
-    <!-- ─── Services ─── -->
-    <section id="services" class="section reveal">
-      <div class="section-head">
-        <div class="section-label">Services</div>
-        <h2 class="section-title">What I can build for you</h2>
-      </div>
-      <div class="bento-grid reveal-stagger">
-        {services.map((svc, i) => {
-          const colors = ['purple', 'cyan', 'orange'];
-          const icons = ['terminal', 'smart_toy', 'build_circle'];
-          const color = colors[i];
-          const hoverClass = color === 'purple' ? 'bento-hover-purple' : color === 'cyan' ? 'bento-hover-cyan' : 'bento-hover-orange';
-          return (
-            <div class={`bento-card glass-panel ${hoverClass}`} style="grid-column:span 4;grid-row:span 1">
-              <div class="bento-bg-glow"></div>
-              <div class="bento-content">
-                <div class="bento-icon-box">
-                  <span class="material-symbols-outlined bento-icon" style={`color:${color === 'purple' ? 'var(--obs-primary)' : color === 'cyan' ? 'var(--obs-secondary)' : 'var(--obs-tertiary)'}`}>{icons[i]}</span>
-                </div>
-                <h3 class="bento-title" style="font-size:24px">{svc.title}</h3>
-                <p class="bento-desc">{svc.desc}</p>
-              </div>
-              <div class="bento-tags">
-                {svc.points.map((pt) => <span class="bento-tag">{pt}</span>)}
-              </div>
             </div>
-          );
-        })}
+          </article>
+        ))}
       </div>
     </section>
 
@@ -341,12 +332,21 @@ const services = [
     <!-- ─── Contact ─── -->
     <section id="contact" class="contact-section">
       <div class="contact-inner">
-        <h2>Let's build something</h2>
-        <p>Got a server that needs custom tools or a community that deserves better automation? Reach out.</p>
+        <h2>Wanna build something?</h2>
+        <p>Got a server that needs plugins, a Discord that needs a bot, or just wanna chat? Hit me up.</p>
         <div class="contact-links">
-          <a href="mailto:veekshith177@gmail.com" class="contact-link">Email</a>
-          <a href="https://github.com/veekshith177-bot" target="_blank" class="contact-link">GitHub</a>
-          <a href="https://discord.gg/2fakAhQpP8" target="_blank" class="contact-link">Discord</a>
+          <a href="mailto:veekshith177@gmail.com" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email
+          </a>
+          <a href="https://github.com/veekshith177-bot" target="_blank" class="contact-link">
+            <svg viewBox="0 0 16 16" fill="currentColor" width="16" height="16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+          <a href="https://discord.gg/2fakAhQpP8" target="_blank" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Discord
+          </a>
         </div>
       </div>
     </section>
