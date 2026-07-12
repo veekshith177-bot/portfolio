@@ -6,25 +6,35 @@ const skills = [
     title: 'Discord.js',
     desc: 'Bots that don\'t fall over when you have a thousand servers. Slash commands, tickets, giveaways — I\'ve built it all.',
     tags: ['TypeScript', 'Redis', 'Sharding'],
-    icon: '#',
+    logo: 'https://cdn.discordapp.com/attachments/1481874713704792186/1525812618093137930/LnBuZw.png?ex=6a54bf3c&is=6a536dbc&hm=39b1231b896f4ecf95e7e21e12c0c76fad303bcb844748695fea7910d99b2987&',
   },
   {
     title: 'Java / Spigot',
     desc: 'Plugins that actually perform. Minigames, economies, staff tools — whatever the server needs.',
     tags: ['Java', 'PaperMC', 'Bukkit API'],
-    icon: '#',
+    logo: 'https://cdn.discordapp.com/attachments/1481874713704792186/1525812792148492308/cG5n.png?ex=6a54bf65&is=6a536de5&hm=db7935cfd32fa68970f55f6a6d0f89ebc528a8fea6409610501cf4a6bf07c03f&',
   },
   {
     title: 'Web Dev',
     desc: 'Dashboards, landing pages, skin viewers — if it needs to exist on the web, I can put it there.',
     tags: ['Astro', 'React', 'REST APIs'],
-    icon: '#',
   },
   {
     title: 'Infra & DevOps',
     desc: 'Docker, CI/CD, Linux servers. I make sure the stuff I build actually stays running.',
     tags: ['Docker', 'GitHub Actions', 'Linux'],
-    icon: '#',
+    logo: 'https://cdn.discordapp.com/attachments/1481874713704792186/1525813028539334697/NS5wbmc.png?ex=6a54bf9e&is=6a536e1e&hm=f4c93fbe6e7c596cedb76cdc17e27bd036a6807d3634a7e08ad6bdd0fda84ef4&',
+  },
+  {
+    title: 'Fabric Mods',
+    desc: 'Lightweight Fabric mods for survival QoL — tool packs and automation helpers.',
+    tags: ['Java', 'Fabric', 'Mixin'],
+    logo: 'https://cdn.discordapp.com/attachments/1481874713704792186/1525813424389619942/P3Jhdz10cnVl.png?ex=6a54bffc&is=6a536e7c&hm=eb7c5113cc00cb123176d2b9701ffb374f1f4c271657691e1670447bb6ba9321&',
+  },
+  {
+    title: 'Management',
+    desc: 'Running SMPs end to end — staff, community, and the dev roadmap. Keeping servers organized so the building actually ships.',
+    tags: ['Team Lead', 'Community', 'Roadmaps'],
   },
 ];
 
@@ -77,6 +87,25 @@ const projects = [
     badges: ['released'],
   },
 ];
+
+const fabricLogo = 'https://cdn.discordapp.com/attachments/1481874713704792186/1525813424389619942/P3Jhdz10cnVl.png?ex=6a54bffc&is=6a536e7c&hm=eb7c5113cc00cb123176d2b9701ffb374f1f4c271657691e1670447bb6ba9321&';
+
+const archived = [
+  {
+    name: 'DonutTools',
+    type: 'Fabric Mod (Lost)',
+    desc: 'A bundled Fabric mod for Donut SMP that packed a load of survival QoL into one pack. The source is gone now, but the ideas stuck.',
+    features: [
+      'Shard Picaxe — breaks a 9x9 area of blocks in a single swing',
+      'Heavy Logics — heavier automation and logic helpers',
+      'Tree Chopper & Axe — fells whole trees in one hit',
+      'Customizable time-limit of use: both the Shard Picaxe and Tree Chopper break once their timer runs out',
+      'Many more small utilities bundled in',
+    ],
+    tech: ['Java', 'Fabric', 'Mixin'],
+    note: 'Always building, always ready for the next challenge.',
+  },
+];
 ---
 
 <Base>
@@ -93,6 +122,7 @@ const projects = [
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#archived">Archived</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -188,9 +218,12 @@ const projects = [
       <div class="experience-list">
         <div class="experience-card">
           <div class="exp-header">
-            <div>
-              <h3 class="exp-title">Lead Developer</h3>
-              <p class="exp-org">Apex SMP</p>
+            <div class="exp-head-main">
+              <img src="https://cdn.discordapp.com/icons/1521151546904285385/eaee9a7f2f06b334f74d59ba1d1a0aa4.png" alt="Apex SMP" class="exp-guild-icon" width="44" height="44" loading="lazy" />
+              <div>
+                <h3 class="exp-title">Lead Developer</h3>
+                <p class="exp-org">Apex SMP</p>
+              </div>
             </div>
             <span class="exp-period">2025 — Present</span>
           </div>
@@ -211,9 +244,12 @@ const projects = [
 
         <div class="experience-card">
           <div class="exp-header">
-            <div>
-              <h3 class="exp-title">Discord Developer</h3>
-              <p class="exp-org">Papaya SMP</p>
+            <div class="exp-head-main">
+              <img src="https://cdn.discordapp.com/icons/1266459225316655275/b99a2ed23e3475abe0d64a63d18f0274.png" alt="Papaya SMP" class="exp-guild-icon" width="44" height="44" loading="lazy" />
+              <div>
+                <h3 class="exp-title">Discord Developer</h3>
+                <p class="exp-org">Papaya SMP</p>
+              </div>
             </div>
             <span class="exp-period">2025 — Present</span>
           </div>
@@ -233,9 +269,12 @@ const projects = [
 
         <div class="experience-card">
           <div class="exp-header">
-            <div>
-              <h3 class="exp-title">Developer &amp; Manager</h3>
-              <p class="exp-org">ShapeSMP</p>
+            <div class="exp-head-main">
+              <img src="https://cdn.discordapp.com/icons/1521258381200068718/4daa5bf8c9baf8dd9cfcd5a10ae337f7.png" alt="Shape SMP" class="exp-guild-icon" width="44" height="44" loading="lazy" />
+              <div>
+                <h3 class="exp-title">Developer &amp; Manager</h3>
+                <p class="exp-org">ShapeSMP</p>
+              </div>
             </div>
             <span class="exp-period">2025 — Present</span>
           </div>
@@ -302,10 +341,14 @@ const projects = [
       </div>
       <div class="skills-grid reveal-stagger">
         {skills.map((sk) => (
-          <div class="skill-card">
+           <div class="skill-card">
             <div class="skill-card-header">
               <div class="skill-card-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                {sk.logo ? (
+                  <img src={sk.logo} alt={sk.title} class="skill-logo" width="18" height="18" loading="lazy" />
+                ) : (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                )}
               </div>
               <h3>{sk.title}</h3>
             </div>
@@ -371,6 +414,43 @@ const projects = [
 
     <hr />
 
+    <!-- ─── Archived / Lost ─── -->
+    <section id="archived" class="section reveal">
+      <div class="section-header">
+        <div class="section-label">Archived</div>
+        <h2 class="section-title">Lost &amp; deprecated</h2>
+        <p class="section-subtitle">Old builds where the source drifted away — but the ideas stuck.</p>
+      </div>
+      <div class="project-grid reveal-stagger">
+        {archived.map((p) => (
+          <article class="project-card lost">
+            <div class="project-badges">
+              <span class="project-badge building">△ Lost Files</span>
+            </div>
+            <div class="project-body">
+              <div class="project-head">
+                <div class="project-head-title">
+                  <img src={fabricLogo} alt="Fabric" class="project-logo" width="22" height="22" loading="lazy" />
+                  <h3 class="project-name">{p.name}</h3>
+                </div>
+                <span class="project-type">{p.type}</span>
+              </div>
+              <p class="project-desc">{p.desc}</p>
+              <ul class="project-features">
+                {p.features.map((f) => <li>{f}</li>)}
+              </ul>
+              <div class="project-tech">
+                {p.tech.map((t) => <span class="project-tech-tag">{t}</span>)}
+              </div>
+              {p.note && <p class="project-note">{p.note}</p>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <hr />
+
     <!-- ─── Contact ─── -->
     <section id="contact" class="contact-section">
       <div class="contact-inner">
@@ -385,9 +465,9 @@ const projects = [
             <svg viewBox="0 0 16 16" fill="currentColor" width="16" height="16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
             GitHub
           </a>
-          <a href="https://discord.gg/2fakAhQpP8" target="_blank" class="contact-link">
+          <a href="https://discord.com/users/1322117319060619307" target="_blank" rel="noopener noreferrer" class="contact-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            Discord
+            DM me
           </a>
         </div>
       </div>
